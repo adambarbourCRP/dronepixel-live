@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Drone Pixel Live</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  background: black;
+  color: white;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.logo {
+  margin-top: 20px;
+  width: 120px;
+}
+
+video {
+  width: 100%;
+  max-width: 700px;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+.status {
+  margin-top: 10px;
+  font-size: 18px;
+}
+</style>
+</head>
+
+<body>
+
+<img src="logo.png" class="logo">
+
+<h2>Drone Pixel Live Stream</h2>
+
+<video id="video" controls autoplay playsinline>
+  <source src="http://20.249.0.105:8888/dronepixel-main/index.m3u8" type="application/x-mpegURL">
+</video>
+
+<div class="status" id="status">Connecting...</div>
+
+<script>
+const video = document.getElementById("video");
+const status = document.getElementById("status");
+
+video.addEventListener("playing", () => {
+  status.innerText = "🟢 Live";
+});
+
+video.addEventListener("error", () => {
+  status.innerText = "🔴 Stream not available";
+});
+</script>
+
+</body>
+</html>
